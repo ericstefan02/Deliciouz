@@ -1,0 +1,46 @@
+<div
+  class="w-full relative flex flex-col md:flex-row gap-8 items-center bg-white p-8 rounded-lg md:rounded-full border-2 border-green-400"
+>
+  <!-- glupe su slike, takav je json -->
+  <img class="rounded-full" [src]="chef.image" alt="chef'picture" />
+  <div class="flex text-center md:text-left flex-col justify-between">
+    <p class="curved italic text-4xl font-bold">
+      {{ chef.firstName }} {{ chef.lastName }}
+    </p>
+    <p class="font-bold text-[18px] leading-[150%] tracking-[-0.24px]">
+      Contact:
+    </p>
+    <div class="flex items-center">
+      <p class="font-bold">Email:</p>
+      <a href="mailto:{{ chef.email }}" class="ml-2 text-green-500">{{
+        chef.email
+      }}</a>
+    </div>
+    <div class="flex items-center">
+      <p class="font-bold">Phone:</p>
+      <a href="tel:{{ chef.phone }}" class="ml-2 text-green-500">{{
+        chef.phone
+      }}</a>
+    </div>
+  </div>
+  <div class="flex items-center gap-3 absolute -top-4 right-6 sm:right-10">
+    <img
+      *ngFor="let _ of [].constructor(chef.achievements); let i = index"
+      src="../../assets/img/ach1.svg"
+      class="w-[30px] sm:w-auto lg:w-[60px]"
+      alt="Achievement Image {{ i + 1 }}"
+    />
+  </div>
+  <div
+    (click)="handleCardClicked()"
+    class="absolute hidden lg:block bottom-6 cursor-pointer right-12 px-3 py-2 bg-green-400 rounded-full"
+  >
+    <p class="px-1 font-bold">Click here to see chef's special dish</p>
+  </div>
+  <div
+    (click)="handleCardClicked()"
+    class="absolute block lg:hidden bottom-3 md:bottom-6 cursor-pointer right-6 md:right-12 px-3 py-2 bg-green-400 rounded-full"
+  >
+    <p class="px-1 font-bold">Go</p>
+  </div>
+</div>

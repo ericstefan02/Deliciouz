@@ -1,0 +1,103 @@
+@if(receipt){
+<div class="bg-white rounded-2xl">
+  <div class="px-10 py-8">
+    <div class="flex flex-col gap-4">
+      <div
+        class="flex flex-col lg:flex-row items-center lg:items-start lg:justify-between"
+      >
+        <img
+          class="w-[400px] shadow-xl rounded-full"
+          [src]="receipt.image"
+          alt="picture of receipt"
+        />
+        <div class="flex items-center lg:items-end flex-col gap-4">
+          <p
+            class="font-bold text-right text-3xl md:text-5xl lg:text-6xl leading-[150%] tracking-[-0.32px]"
+          >
+            {{ receipt.name }}
+          </p>
+          <div class="flex items-center gap-2">
+            <p class="text-4xl font-bold">{{ receipt.rating }}</p>
+            <ng-icon class="text-4xl text-orange-400" name="ionStar"></ng-icon>
+            <ng-icon class="text-4xl text-orange-400" name="ionStar"></ng-icon>
+            <ng-icon class="text-4xl text-orange-400" name="ionStar"></ng-icon>
+            <ng-icon class="text-4xl text-orange-400" name="ionStar"></ng-icon>
+            <ng-icon class="text-4xl text-orange-400" name="ionStar"></ng-icon>
+          </div>
+          <div class="flex items-center gap-2">
+            <app-receipt-label
+              [type]="'cuisine'"
+              [value]="receipt.cuisine"
+            ></app-receipt-label>
+            <app-receipt-label
+              [type]="'difficulty'"
+              [value]="receipt.difficulty"
+            ></app-receipt-label>
+          </div>
+          <div class="flex items-center gap-2">
+            <ng-icon class="text-3xl" name="ionRestaurant"></ng-icon>
+            <div *ngFor="let meal of receipt.mealType; let i = index">
+              <div class="bg-green-400 px-3 py-2 rounded-full">
+                <p class="text-xl font-bold">
+                  {{ meal }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="px-10 flex flex-col lg:flex-row justify-between items-center lg:items-start"
+      >
+        <div class="lg:max-w-[50%]">
+          <p class="tracking-[1px] font-bold text-4xl curved italic">
+            Ingredients
+          </p>
+          <div class="flex flex-col items-start mt-4 gap-2">
+            <div *ngFor="let ingredient of receipt.ingredients; let i = index">
+              <div>
+                <p
+                  class="text-2xl curved italic font-medium border-b-[2.5px] border-orange-400"
+                >
+                  {{ ingredient }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mt-8 lg:mt-0 lg:max-w-[50%]">
+          <p
+            class="tracking-[1px] font-bold text-4xl curved italic text-center lg:text-right"
+          >
+            Instructions
+          </p>
+          <div class="flex flex-col items-center lg:items-end mt-4 gap-2">
+            <div
+              *ngFor="let instruction of receipt.instructions; let i = index"
+            >
+              <div>
+                <p
+                  class="text-2xl curved italic font-medium border-b-[2.5px] border-orange-400"
+                >
+                  {{ instruction }}
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 mt-4">
+              <p class="text-2xl font-medium tracking-[0.8px]">Ready in</p>
+              <p class="text-3xl font-bold">
+                {{ receipt.prepTimeMinutes + receipt.cookTimeMinutes }} min
+              </p>
+              <ng-icon
+                class="text-5xl text-orange-400"
+                name="ionTime"
+              ></ng-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="h-[140px] mt-20 bg-gradient-to-b from-white to-green-400"></div>
+</div>
+}

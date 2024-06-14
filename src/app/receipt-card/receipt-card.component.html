@@ -1,0 +1,41 @@
+<div
+  class="p-6 flex flex-col gap-4 shadow-md rounded-lg mt-8 cursor-pointer relative bg-white"
+>
+  <img
+    [src]="receipt.image"
+    class="w-[180px] mx-auto -mt-12 rounded-full shadow-basic"
+    alt="picture of the dish"
+  />
+  <div class="flex items-center justify-between">
+    <p class="text-2xl font-bold leading-[150%] tracking-[-0.28px]">
+      {{ receipt.name }}
+    </p>
+    <div class="flex items-center gap-2">
+      <p class="font-bold text-lg">{{ receipt.rating }}</p>
+      <ng-icon class="text-2xl text-orange-400" name="ionStar"></ng-icon>
+    </div>
+  </div>
+  <div class="flex items-center gap-2">
+    <app-receipt-label
+      [type]="'cuisine'"
+      [value]="receipt.cuisine"
+    ></app-receipt-label>
+    <app-receipt-label
+      [type]="'difficulty'"
+      [value]="receipt.difficulty"
+    ></app-receipt-label>
+  </div>
+  @if(receipt.reviewCount>=65){
+  <div
+    class="flex items-center absolute right-4 -top-4 gap-1 bg-green-400 px-3 py-2 rounded-full"
+  >
+    <p class="font-bold text-[14px]">Top</p>
+    <ng-icon class="text-2xl" name="ionFlame"></ng-icon>
+  </div>
+  }
+  <p>
+    <span class="text-lg font-medium">{{ receipt.caloriesPerServing }}</span
+    >kcal / <span class="text-lg font-medium">{{ receipt.servings }}</span
+    >s
+  </p>
+</div>

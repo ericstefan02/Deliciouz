@@ -1,0 +1,5 @@
+<div class="flex flex-col gap-4">
+  @for(chef of chefs; track chef.id) {
+  <app-chef-card [chef]="chef"></app-chef-card>
+  }
+</div>

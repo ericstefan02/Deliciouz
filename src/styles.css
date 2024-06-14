@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+body {
+    background-color: #fb923c;
+}
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* Apply the font to your body or specific elements */
+.curved {
+  font-family: 'Playfair Display', serif;
+}
+
